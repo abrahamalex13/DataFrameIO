@@ -1,0 +1,4 @@
+include ./DataFrameIO/VERSION
+include requirements.txt
+include README.md
+recursive-include ./DataFrameIO/*
