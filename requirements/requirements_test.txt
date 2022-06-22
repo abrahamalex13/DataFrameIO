@@ -1,4 +1,4 @@
-boto3==1.20.24
+boto3>=1.20.24
 pandas>=1.2.4
-python-dotenv==0.20.0
+python-dotenv>=0.19.2
 pytest==6.2.4
