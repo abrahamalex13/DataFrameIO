@@ -3,13 +3,15 @@ import setuptools
 
 DIR_ROOT = Path(__file__).resolve().parent
 DIR_PACKAGE = DIR_ROOT / 'DataFrameIO'
+DIR_REQS = DIR_ROOT / 'requirements'
 
 with open(DIR_PACKAGE / "VERSION") as f:
     _version = f.read().strip()
     VERSION = _version
 
 # setup requires Python list of required pkg
-def list_reqs(filename="requirements.txt"):
+PATH_REQS = DIR_REQS / "requirements.txt"
+def list_reqs(filename=PATH_REQS):
     with open(filename) as f:
         return f.read().splitlines()
 
