@@ -1,3 +1,3 @@
 from DataFrameIO import utils
-from DataFrameIO import DataFrameWriter
-from DataFrameIO import DataFrameReader
+from DataFrameIO.DataFrameWriter import DataFrameWriter
+from DataFrameIO.DataFrameReader import DataFrameReader
