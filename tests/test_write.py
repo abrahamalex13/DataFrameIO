@@ -4,7 +4,7 @@ import pandas as pd
 import pathlib
 import shutil
 
-from DataFrameIO.DataFrameWriter import DataFrameWriter
+from DataFrameIO import DataFrameWriter
 
 load_dotenv()
 
@@ -15,30 +15,32 @@ def test_write_csv_to_local():
     df_writer = DataFrameWriter(
         dir="tests/dump", filename="dummy", extensions=['csv']
         )
+    response = df_writer.write(df)
     
-    assert df_writer.write(df) == 200
+    assert response['ok']
 
 def test_write_csv_to_local_mkdir():
 
     df_writer = DataFrameWriter(
         dir="tests/dump/temp", filename="dummy", extensions=['csv']
         )
-    check = df_writer.write(df) == 200
+    response = df_writer.write(df)
 
     try:
         shutil.rmtree(pathlib.Path("./tests/dump/temp"))
     except:
         print("tests/dump/temp could not be deleted.")
     
-    assert check
+    assert response['ok']
 
 def test_write_pkl_to_local():
 
     df_writer = DataFrameWriter(
         dir="tests/dump", filename="dummy", extensions=['pkl']
         )
+    response = df_writer.write(df)
     
-    assert df_writer.write(df) == 200
+    assert response['ok']
 
 def test_write_csv_to_s3():
 
@@ -47,5 +49,6 @@ def test_write_csv_to_s3():
         , filename="dummy"
         , extensions=['csv']
         )
-
-    assert df_writer.write(df) == 200
+    response = df_writer.write(df)
+    
+    assert response['ok']

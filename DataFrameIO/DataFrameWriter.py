@@ -51,21 +51,28 @@ class DataFrameWriter:
 
             try:
                 writer(df)
-                print('File written: ' + self.filename_clean)
-                response_code = 200
+                response = {
+                    'ok': True
+                    , 'message': 'File written: ' + self.filename_clean 
+                    }
 
             except FileNotFoundError:
                 os.makedirs(self.dir_clean)
                 try:
                     writer(df)
-                    response_code = 200
+                    response = {
+                        'ok': True
+                        , 'message': 'File written: ' + self.filename_clean 
+                        }
                 except:
-                    print('File write failed: ' + self.filename_clean)
-                    response_code = 400
+                    response = {
+                        'ok': False
+                        , 'message': 'File write failed: ' + self.filename_clean 
+                        }
             
             # TODO: suppose error is not FileNotFoundError. What then?
 
-        return response_code
+        return response
 
     def _get_writer(self, extension):
         
